@@ -46,6 +46,7 @@ Encore.setPublicPath('/assets')
 |
 */
 Encore.addEntry('app', './frontend/assets/js/app.js')
+Encore.addEntry('bacon', './frontend/assets/js/bacon.js')
 
 /*
 |--------------------------------------------------------------------------
