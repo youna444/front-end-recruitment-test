@@ -3,8 +3,44 @@
     margin: 0 auto;
     display: flex;
     align-items: flex-start;
-    fieldset {
+    justify-content: center;
+    .checkout-form {
+        fieldset {
+            margin-top: 40px;
+        }
+    }
+    .checkout-form__wrapper {
+        width: 565px;
+    }
+    .checkout-form__button {
+        border: 0;
+        width: 100%;
+        text-transform: uppercase;
+        border-bottom: 2px solid #5cb204;
+        background-color: #6bd400;
+        color: #fff;
+        border-radius: 5px;
+        font-weight: 700;
+        padding: 15px 20px;
+        font-size: 13px;
+        letter-spacing: 0.01rem;
         margin-top: 40px;
+        transition: background-color .3s ease;
+        cursor: pointer;
+        span {
+            display: inline-block;
+            &::before {
+                content: url(../../public/images/cart-icon.svg);
+                display: inline-block;
+                margin-right: 5px;
+                height: 15px;
+                width: 15px;
+                transform: translateY(1px);
+            }
+        }
+        &:hover, &:focus, &:active {
+            background-color: #5cb204;
+        }
     }
     .checkout-form__summary {
         width: 260px;
