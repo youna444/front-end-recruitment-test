@@ -1,0 +1,141 @@
+<div>
+    <div class="checkout-form">
+        <div class="checkout-form__wrapper">
+            @component('components/form/formBase', {
+                method: 'POST',
+                id: 'checkout',
+            })
+                <fieldset>
+                    <legend><span>1</span> Personal information</legend>
+                    @!component('components/form/formInputText', {
+                        type: 'text',
+                        name: 'first-name',
+                        label: 'First Name',
+                        placeholder: 'Elon',
+                        wrapperAdditionalClass: 'form-row--50'
+                    })
+                    @!component('components/form/formInputText', {
+                        type: 'text',
+                        name: 'last-name',
+                        label: 'Last Name',
+                        placeholder: 'Musk',
+                        wrapperAdditionalClass: 'form-row--50'
+                    })
+                    @!component('components/form/formInputText', {
+                        type: 'email',
+                        name: 'email',
+                        label: 'Email',
+                        placeholder: 'elon@spacex.com',
+                    })
+                    @!component('components/form/formInputSelect', {
+                        name: 'country',
+                        label: 'Country',
+                        wrapperAdditionalClass: 'form-row--50 form-row--select',
+                        options: [
+                            { text: 'United States', value: 'us' },
+                            { text: 'Poland', value: 'pl' },
+                        ]
+                    })
+                    @!component('components/form/formInputText', {
+                        type: 'text',
+                        name: 'postal-code',
+                        label: 'Postal Code',
+                        placeholder: '10001',
+                        wrapperAdditionalClass: 'form-row--50'
+                    })
+                    @!component('components/form/formInputText', {
+                        type: 'text',
+                        name: 'phone-number',
+                        label: 'Phone Number',
+                        placeholder: '(212) 692-93-92',
+                    })
+                </fieldset>
+                <fieldset>
+                    <legend class="legend--lock-icon"><span>2</span> Payments details</legend>
+                    @!component('components/form/formInputText', {
+                        type: 'text',
+                        name: 'credit-card',
+                        label: 'Credit Card Number',
+                        placeholder: '0000 - 0000 - 0000 - 0000',
+                        autocomplete: 'off',
+                        wrapperAdditionalClass: 'form-row--visa'
+                    })
+                    @!component('components/form/formInputText', {
+                        type: 'password',
+                        name: 'security-code',
+                        label: 'Security Code',
+                        placeholder: '***',
+                        autocomplete: 'off',
+                        wrapperAdditionalClass: 'form-row--50 form-row--info'
+                    })
+                    @!component('components/form/formInputText', {
+                        type: 'text',
+                        name: 'exp-date',
+                        label: 'Expiration Date',
+                        placeholder: 'MM / YY',
+                        autocomplete: 'off',
+                        wrapperAdditionalClass: 'form-row--50'
+                    })
+                </fieldset>
+                @!component('components/form/formButton', {
+                    text: 'Complete purchase'
+                })
+            @end
+        </div>
+        <div class="checkout-form__summary">
+            <div class="summary__table-wrapper">
+                <table class="summary__table summary__table--items">
+                    <caption>Your order</caption>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Apple Watch Sport
+                            </td>
+                            <td>
+                                $ 580
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Modern Buckle
+                            </td>
+                            <td>
+                                $ 380
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="summary__table summary__table--subtotal">
+                    <tbody>
+                        <tr>
+                            <td>
+                                Total purchases
+                            </td>
+                            <td>
+                                $ 960.00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Estimated Tax
+                            </td>
+                            <td>
+                                $ 0
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                Total
+                            </td>
+                            <td>
+                                $ 960
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
