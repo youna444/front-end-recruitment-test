@@ -19,9 +19,9 @@
             legend {
                 display: flex;
                 align-items: center;
-                font-size: 11px;
+                font-size: 12px;
                 text-transform: uppercase;
-                letter-spacing: 0.12em;
+                letter-spacing: 0.05em;
                 font-weight: 700;
                 margin-bottom: 20px;
                 margin-left: -30px;
@@ -37,6 +37,16 @@
                     align-items: center;
                     justify-content: center;
                     margin-right: 10px;
+                }
+                &.legend--lock-icon {
+                    &::after {
+                        content: url(../../public/images/lock-icon.svg);
+                        display: inline-block;
+                        margin-right: 5px;
+                        margin-left: 9px;
+                        height: 12px;
+                        width: 12px;
+                    }
                 }
             }
             .form-row {
@@ -67,6 +77,7 @@
                 select {
                     width: 100%;
                     -webkit-appearance: none;
+                    background-color: #fff;
                 }
                 &.form-row--50 {
                     width: calc(50% - 10px);
@@ -84,6 +95,49 @@
                         pointer-events: none;
                         top: 50%;
                         transform: translateY(-50%) rotate(135deg);
+                    }
+                }
+                &.form-row--info {
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        background-image: url(../../public/images/question-mark-icon.svg);
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        right: 10px;
+                        height: 22px;
+                        width: 22px;
+                        transform: translateY(-50%);
+                        pointer-events: none;
+                    }
+                }
+                &.form-row--visa {
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        top: 50%;
+                        background-image: url(../../public/images/visa-logo.png);
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        right: 14px;
+                        height: 12px;
+                        width: 30px;
+                        transform: translateY(-35%);
+                        pointer-events: none;
+                    }
+                    &::before {
+                        content: '';
+                        top: 31%;
+                        right: 9px;
+                        border: 1px solid #e0e0e0;
+                        border-radius: 5px;
+                        pointer-events: none;
+                        position: absolute;
+                        height: 22px;
+                        width: 36px;
                     }
                 }
             }
