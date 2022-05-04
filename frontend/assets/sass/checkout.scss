@@ -1,0 +1,73 @@
+.checkout-form {
+    max-width: 885px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    fieldset {
+        margin-top: 40px;
+    }
+    .checkout-form__summary {
+        width: 260px;
+        margin-left: 15px;
+        margin-top: 40px;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 5px;
+        .summary__table-wrapper {
+            border: 1px dashed #dcdcdc;
+            padding: 15px 7px 10px;
+            caption {
+                caption-side: top;
+                text-align: left;
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: 12px;
+                padding: 0 3px 13px;
+                letter-spacing: 0.02rem;
+            }
+            .summary__table {
+                font-size: 12px;
+                font-weight: 700;
+                width: 100%;
+                max-width: 100%;
+                border-bottom: 1px dashed #dcdcdc;
+                padding-bottom: 12px;
+                tr {
+                    td {
+                        padding-bottom: 10px
+                    }
+                    td {
+                        &:last-child {
+                            text-align: right;
+                        }
+                    }
+                }
+                &.summary__table--subtotal {
+                    padding-top: 10px;
+                    border-bottom: 0;
+                    tbody {
+                        tr {
+                            &:last-child {
+                                td {
+                                    padding-bottom: 14px;
+                                }
+                            }
+                        }
+                    }
+                    tfoot {
+                        tr {
+                            vertical-align: top;
+                        }
+                        td {
+                            border-top: 1px dashed #dcdcdc;
+                            padding-top: 14px;
+                            &:last-child {
+                                font-size: 21px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
