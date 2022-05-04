@@ -1,0 +1,25 @@
+<div 
+    @if(wrapperAdditionalClass)    
+        class="form-row {{wrapperAdditionalClass}}"
+    @else
+        class="form-row"    
+    @endif    
+>
+    <label for="{{ name }}">
+        {{ label }}
+    </label>
+    <input
+        id="{{ name }}"
+        name="{{ name }}"
+        type="{{ type ? type : 'text' }}"
+        @if(required)
+            required
+        @endif
+        @if(placeholder)
+            placeholder="{{ placeholder }}"
+        @endif
+        @if(autocomplete)
+            autocomplete="{{ autocomplete }}"
+        @endif
+    >
+</div>

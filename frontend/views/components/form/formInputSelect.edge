@@ -1,0 +1,22 @@
+<div 
+    @if(wrapperAdditionalClass)    
+        class="form-row {{wrapperAdditionalClass}}"
+    @else
+        class="form-row"    
+    @endif    
+>
+    <label for="{{ name }}">
+        {{ label }}
+    </label>
+    <select
+        id="{{ name }}"
+        name="{{ name }}"
+        @if(required)
+            required
+        @endif
+    >
+        @each(option in options)
+        <option value="{{ option.value }}"> {{ option.text }} </option>
+        @end
+    </select>
+</div>
