@@ -6,7 +6,7 @@ const checkoutForm = document.forms['checkout'];
 let invalidInputs = [];
 
 checkoutForm.addEventListener('submit', (e) => {
-
+    const postalCodeField = checkoutForm.querySelector('#postal-code');
     const phoneNumberField = checkoutForm.querySelector('#phone-number');
     const emailField = checkoutForm.querySelector('#email');
     const creditCardField = checkoutForm.querySelector('#credit-card');
@@ -26,6 +26,9 @@ checkoutForm.addEventListener('submit', (e) => {
 
     //validate phone number input
     validateNumberFields(phoneNumberField, 9);
+
+    //validate postal code input
+    validateNumberFields(postalCodeField, 5);
 
     //validate credit card input
     validateNumberFields(creditCardField, 16);
