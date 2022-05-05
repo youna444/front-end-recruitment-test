@@ -80,43 +80,8 @@ const checkInputNumericCharacters = (input) => {
 
 const checkInputExpiryDate = (input) => {
     if (/^(0[1-9]|1[0-2])\/?([0-9]{2})$/.test(input.value)) { //regex validation for format MM/YY
-        const expMonth = input.value.split('/')[0]; //get set month
-        const expYear = input.value.split('/')[1]; //get set year
-
-        const currentYearLastTwoDigits = new Date().getFullYear().toString().slice(-2); // Get last 2 digits of current year
-
-        // Get current month in MM format
-        let currentMonthMMFormat = new Date().getMonth()+1;
-        currentMonthMMFormat = currentMonthMMFormat.toString().padStart(2, '0'); // i.e. changes 1 -> 01....9->09, 10 -> 10
-
-        //validate month func
-        const validateMonth = (setMonth, currentMonth) => {
-            if(setMonth > 0 && setMonth <= 12 ) { //check if value is 1-12
-                if(expMonth >= currentMonth) {
-                    return true;
-                }
-            } else {
-                return false;
-            }
-        }
-
-        //validate year func
-        const validateYear = (setYear, currentYear) => {
-            if(setYear >= currentYear) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        // handle inpit validation
-        if(validateMonth(expMonth, currentMonthMMFormat) && validateYear(expYear, currentYearLastTwoDigits)) {
-            removeErrorMessage(input);
-            return true;
-        } else {
-            setErrorMessage(input, 'Provided card is expired');
-            return false;
-        }
+        removeErrorMessage(input);
+        return true;
     } else {
         setErrorMessage(input, 'Invalid characters, please provide data in MM/YY format');
         return false;
