@@ -12,6 +12,7 @@
                         name: 'first-name',
                         label: 'First Name',
                         placeholder: 'Elon',
+                        required: 'true',
                         wrapperAdditionalClass: 'form-row--50'
                     })
                     @!component('components/form/formInputText', {
@@ -19,6 +20,7 @@
                         name: 'last-name',
                         label: 'Last Name',
                         placeholder: 'Musk',
+                        required: 'true',
                         wrapperAdditionalClass: 'form-row--50'
                     })
                     @!component('components/form/formInputText', {
@@ -26,6 +28,7 @@
                         name: 'email',
                         label: 'Email',
                         placeholder: 'elon@spacex.com',
+                        required: 'true',
                     })
                     @!component('components/form/formInputSelect', {
                         name: 'country',
@@ -34,20 +37,23 @@
                         options: [
                             { text: 'United States', value: 'us' },
                             { text: 'Poland', value: 'pl' },
-                        ]
+                        ],
+                        required: 'true',
                     })
                     @!component('components/form/formInputText', {
                         type: 'text',
                         name: 'postal-code',
                         label: 'Postal Code',
                         placeholder: '10001',
-                        wrapperAdditionalClass: 'form-row--50'
+                        wrapperAdditionalClass: 'form-row--50',
+                        required: 'true',
                     })
                     @!component('components/form/formInputText', {
                         type: 'text',
                         name: 'phone-number',
                         label: 'Phone Number',
                         placeholder: '(212) 692-93-92',
+                        required: 'true',
                     })
                 </fieldset>
                 <fieldset>
@@ -58,6 +64,7 @@
                         label: 'Credit Card Number',
                         placeholder: '0000 - 0000 - 0000 - 0000',
                         autocomplete: 'off',
+                        required: 'true',
                         wrapperAdditionalClass: 'form-row--visa'
                     })
                     @!component('components/form/formInputText', {
@@ -66,6 +73,7 @@
                         label: 'Security Code',
                         placeholder: '***',
                         autocomplete: 'off',
+                        required: 'true',
                         wrapperAdditionalClass: 'form-row--50 form-row--info'
                     })
                     @!component('components/form/formInputText', {
@@ -74,6 +82,7 @@
                         label: 'Expiration Date',
                         placeholder: 'MM / YY',
                         autocomplete: 'off',
+                        required: 'true',
                         wrapperAdditionalClass: 'form-row--50'
                     })
                 </fieldset>
