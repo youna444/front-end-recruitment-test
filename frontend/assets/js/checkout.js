@@ -4,8 +4,9 @@ import '../sass/checkout.scss'
 //simple form validation
 const checkoutForm = document.forms['checkout'];
 
+
 checkoutForm.addEventListener('submit', (e) => {
-    
+
     e.preventDefault();
 
     const mainFormError = document.querySelector('.form__error');
@@ -51,6 +52,7 @@ checkoutForm.addEventListener('submit', (e) => {
     }).then((response) => {
         return response.json();
     }).then((body) => {
+        console.log(body);
         if(body.message) {
             mainFormError.classList.remove('active');
             mainFormSuccess.classList.add('active');
