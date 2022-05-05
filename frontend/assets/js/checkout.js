@@ -4,46 +4,33 @@ import '../sass/checkout.scss'
 //simple form validation
 const checkoutForm = document.forms['checkout'];
 
+let allInputs = checkoutForm.elements; //get all html elements inside form
+allInputs = [...allInputs].filter(e => e.getAttribute("name")); //filter out array of the elements that are not inputs
+
+const postalCodeField = checkoutForm.querySelector('#postalCode');
+const phoneNumberField = checkoutForm.querySelector('#phone');
+const emailField = checkoutForm.querySelector('#email');
+const creditCardField = checkoutForm.querySelector('#creditCard');
+const securityCodeField = checkoutForm.querySelector('#CVV');
+const expDateField = checkoutForm.querySelector('#expDate');
+
+allInputs.forEach(element => {
+    element.addEventListener('input', (e) => { //handle live validation
+        handleInputsValidation(element);
+    })
+});
 
 checkoutForm.addEventListener('submit', (e) => {
 
     e.preventDefault();
 
     const mainFormError = document.querySelector('.form__error');
-    const mainFormSuccess = document.querySelector('.form__success');
+    const mainFormSuccess = document.querySelector('.form__success');;
 
-    const postalCodeField = checkoutForm.querySelector('#postalCode');
-    const phoneNumberField = checkoutForm.querySelector('#phone');
-    const emailField = checkoutForm.querySelector('#email');
-    const creditCardField = checkoutForm.querySelector('#creditCard');
-    const securityCodeField = checkoutForm.querySelector('#CVV');
-    const expDateField = checkoutForm.querySelector('#expDate');
-
-    let allInputs = checkoutForm.elements; //get all html elements inside form
-    allInputs = [...allInputs].filter(e => e.getAttribute("name")); //filter out array of the elements that are not inputs
-
-    //check all the inputs for value presence
+    //validate inputs
     allInputs.forEach(element => {
-        checkIfInputValueIsEmpty(element);
-    });
-
-    //validate email input
-    validateEmailInput(emailField);
-
-    //validate phone number input
-    validateNumberFields(phoneNumberField, 9);
-
-    //validate postal code input
-    validateNumberFields(postalCodeField, 5);
-
-    //validate credit card input
-    validateNumberFields(creditCardField, 16);
-
-    //validate security code input
-    validateNumberFields(securityCodeField, 3);
-
-    //validate exp date input
-    checkInputExpiryDate(expDateField);
+        handleInputsValidation(element);
+    })
 
     //fetch post request and handle error/success messages
     fetch(e.target.action, {
@@ -65,6 +52,31 @@ checkoutForm.addEventListener('submit', (e) => {
         console.log(error)
     });
 });
+
+
+const handleInputsValidation = (element) => {
+    checkIfInputValueIsEmpty(element);  //check all the inputs for value presence
+    switch (element) {
+        case phoneNumberField:   //validate phone number input
+            validateNumberFields(element, 9);
+            break;
+        case emailField: //validate email input
+            validateEmailInput(element);
+            break;
+        case postalCodeField:  //validate postal code input
+            validateNumberFields(element, 5)
+            break;
+        case creditCardField:  //validate credit card input
+            validateNumberFields(element, 16);
+            break;
+        case securityCodeField: //validate security code input
+            validateNumberFields(element, 3);
+            break;
+        case expDateField: //validate exp date input
+            checkInputExpiryDate(element);
+            break;
+    }
+}
 
 const checkIfInputValueIsEmpty = (input) => {
     if(input.value.trim() === "") {
