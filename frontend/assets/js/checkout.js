@@ -7,6 +7,7 @@ let invalidInputs = [];
 
 checkoutForm.addEventListener('submit', (e) => {
 
+    const phoneNumberField = checkoutForm.querySelector('#phone-number');
     const emailField = checkoutForm.querySelector('#email');
     const creditCardField = checkoutForm.querySelector('#credit-card');
     const securityCodeField = checkoutForm.querySelector('#security-code');
@@ -22,6 +23,9 @@ checkoutForm.addEventListener('submit', (e) => {
 
     //validate email input
     validateEmailInput(emailField);
+
+    //validate phone number input
+    validateNumberFields(phoneNumberField, 9);
 
     //validate credit card input
     validateNumberFields(creditCardField, 16);
