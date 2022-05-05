@@ -162,6 +162,25 @@
             }
         }
     }
+    .form__success, .form__error {
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+        display: none;
+        &.active {
+            display: block;
+        }
+    }
+    .form__error {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+    .form__success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
     .checkout-form__button {
         border: 0;
         width: 100%;

@@ -1,3 +1,5 @@
-<form method="{{method}}" id="{{id}}">
+<form action="/order" method="{{method}}" id="{{id}}">
   {{{ await $slots.main() }}}
 </form>
+<p class="form__error">One or more fields are incorrect.</p>
+<p class="form__success"></p>
