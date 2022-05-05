@@ -210,6 +210,13 @@
         &:hover, &:focus, &:active {
             background-color: #5cb204;
         }
+        &:disabled {
+            cursor: not-allowed;
+            background-color: #8fbc8f;
+            &:hover, &:focus, &:active {
+                background-color: #8fbc8f;
+            }
+        }
     }
     .checkout-form__summary {
         width: 260px;
