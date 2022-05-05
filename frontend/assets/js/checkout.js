@@ -3,9 +3,14 @@ import '../sass/checkout.scss'
 
 //simple form validation
 const checkoutForm = document.forms['checkout'];
-let invalidInputs = [];
 
 checkoutForm.addEventListener('submit', (e) => {
+    
+    e.preventDefault();
+
+    const mainFormError = document.querySelector('.form__error');
+    const mainFormSuccess = document.querySelector('.form__success');
+
     const postalCodeField = checkoutForm.querySelector('#postalCode');
     const phoneNumberField = checkoutForm.querySelector('#phone');
     const emailField = checkoutForm.querySelector('#email');
@@ -39,10 +44,24 @@ checkoutForm.addEventListener('submit', (e) => {
     //validate exp date input
     checkInputExpiryDate(expDateField);
 
-    if(invalidInputs.length > 0) {
-        e.preventDefault();
-    }
-
+    //fetch post request and handle error/success messages
+    fetch(e.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(e.target))
+    }).then((response) => {
+        return response.json();
+    }).then((body) => {
+        if(body.message) {
+            mainFormError.classList.remove('active');
+            mainFormSuccess.classList.add('active');
+            mainFormSuccess.textContent = body.message;
+        } else {
+            mainFormError.classList.add('active');
+            mainFormSuccess.classList.remove('active');
+        }
+    }).catch((error) => {
+        console.log(error)
+    });
 });
 
 const checkIfInputValueIsEmpty = (input) => {
@@ -108,9 +127,6 @@ const setErrorMessage = (input, message) => {
         errorElement.innerText = message;
     }
     input.classList.add('is-invalid');
-    if(!invalidInputs.includes(input)) { //check if input already is in array so it won't duplicate
-        invalidInputs.push(input); //push invalid input to the invalid inputs array
-    }
 }
 
 const removeErrorMessage = (input) => {
@@ -119,5 +135,4 @@ const removeErrorMessage = (input) => {
         errorElement.innerText = '';
     }
     input.classList.remove('is-invalid');
-    invalidInputs = invalidInputs.filter(item => item !== input); //remove valid inputs from the invalid inputs array
 }
