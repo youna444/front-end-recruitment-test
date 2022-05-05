@@ -9,18 +9,16 @@
                     <legend><span>1</span> Personal information</legend>
                     @!component('components/form/formInputText', {
                         type: 'text',
-                        name: 'first-name',
+                        name: 'firstName',
                         label: 'First Name',
                         placeholder: 'Elon',
-                        required: 'true',
                         wrapperAdditionalClass: 'form-row--50'
                     })
                     @!component('components/form/formInputText', {
                         type: 'text',
-                        name: 'last-name',
+                        name: 'lastName',
                         label: 'Last Name',
                         placeholder: 'Musk',
-                        required: 'true',
                         wrapperAdditionalClass: 'form-row--50'
                     })
                     @!component('components/form/formInputText', {
@@ -28,7 +26,6 @@
                         name: 'email',
                         label: 'Email',
                         placeholder: 'elon@spacex.com',
-                        required: 'true',
                     })
                     @!component('components/form/formInputSelect', {
                         name: 'country',
@@ -37,52 +34,46 @@
                         options: [
                             { text: 'United States', value: 'us' },
                             { text: 'Poland', value: 'pl' },
-                        ],
-                        required: 'true',
+                        ]
                     })
                     @!component('components/form/formInputText', {
                         type: 'text',
-                        name: 'postal-code',
+                        name: 'postalCode',
                         label: 'Postal Code',
                         placeholder: '10001',
-                        wrapperAdditionalClass: 'form-row--50',
-                        required: 'true',
+                        wrapperAdditionalClass: 'form-row--50'
                     })
                     @!component('components/form/formInputText', {
                         type: 'text',
-                        name: 'phone-number',
+                        name: 'phone',
                         label: 'Phone Number',
                         placeholder: '(212) 692-93-92',
-                        required: 'true',
                     })
                 </fieldset>
                 <fieldset>
                     <legend class="legend--lock-icon"><span>2</span> Payments details</legend>
                     @!component('components/form/formInputText', {
                         type: 'text',
-                        name: 'credit-card',
+                        name: 'creditCard',
                         label: 'Credit Card Number',
                         placeholder: '0000 - 0000 - 0000 - 0000',
                         autocomplete: 'off',
-                        required: 'true',
                         wrapperAdditionalClass: 'form-row--visa'
                     })
                     @!component('components/form/formInputText', {
                         type: 'password',
-                        name: 'security-code',
+                        name: 'CVV',
                         label: 'Security Code',
                         placeholder: '***',
                         autocomplete: 'off',
-                        required: 'true',
                         wrapperAdditionalClass: 'form-row--50 form-row--info'
                     })
                     @!component('components/form/formInputText', {
                         type: 'text',
-                        name: 'exp-date',
+                        name: 'expDate',
                         label: 'Expiration Date',
                         placeholder: 'MM / YY',
                         autocomplete: 'off',
-                        required: 'true',
                         wrapperAdditionalClass: 'form-row--50'
                     })
                 </fieldset>

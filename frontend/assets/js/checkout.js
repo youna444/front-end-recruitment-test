@@ -6,12 +6,12 @@ const checkoutForm = document.forms['checkout'];
 let invalidInputs = [];
 
 checkoutForm.addEventListener('submit', (e) => {
-    const postalCodeField = checkoutForm.querySelector('#postal-code');
-    const phoneNumberField = checkoutForm.querySelector('#phone-number');
+    const postalCodeField = checkoutForm.querySelector('#postalCode');
+    const phoneNumberField = checkoutForm.querySelector('#phone');
     const emailField = checkoutForm.querySelector('#email');
-    const creditCardField = checkoutForm.querySelector('#credit-card');
-    const securityCodeField = checkoutForm.querySelector('#security-code');
-    const expDateField = checkoutForm.querySelector('#exp-date');
+    const creditCardField = checkoutForm.querySelector('#creditCard');
+    const securityCodeField = checkoutForm.querySelector('#CVV');
+    const expDateField = checkoutForm.querySelector('#expDate');
 
     let allInputs = checkoutForm.elements; //get all html elements inside form
     allInputs = [...allInputs].filter(e => e.getAttribute("name")); //filter out array of the elements that are not inputs
