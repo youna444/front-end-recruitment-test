@@ -1,5 +1,6 @@
 import '../css/checkout.css'
 import '../sass/checkout.scss'
+import 'babel-polyfill'
 
 //simple form validation
 const checkoutForm = document.forms['checkout'];
@@ -14,6 +15,11 @@ const creditCardField = checkoutForm.querySelector('#creditCard');
 const securityCodeField = checkoutForm.querySelector('#CVV');
 const expDateField = checkoutForm.querySelector('#expDate');
 
+const mainFormError = document.querySelector('.form__error');
+const mainFormSuccess = document.querySelector('.form__success');
+
+const formButton = checkoutForm.querySelector('button');
+
 allInputs.forEach(element => {
     element.addEventListener('input', (e) => { //handle live validation
         handleInputsValidation(element);
@@ -21,38 +27,41 @@ allInputs.forEach(element => {
 });
 
 checkoutForm.addEventListener('submit', (e) => {
-
     e.preventDefault();
-
-    const mainFormError = document.querySelector('.form__error');
-    const mainFormSuccess = document.querySelector('.form__success');;
-
     //validate inputs
     allInputs.forEach(element => {
         handleInputsValidation(element);
-    })
-
-    //fetch post request and handle error/success messages
-    fetch(e.target.action, {
-        method: 'POST',
-        body: new URLSearchParams(new FormData(e.target))
-    }).then((response) => {
-        return response.json();
-    }).then((body) => {
-        console.log(body);
-        if(body.message) {
-            mainFormError.classList.remove('active');
-            mainFormSuccess.classList.add('active');
-            mainFormSuccess.textContent = body.message;
-        } else {
-            mainFormError.classList.add('active');
-            mainFormSuccess.classList.remove('active');
-        }
-    }).catch((error) => {
-        console.log(error)
     });
+    //handle post response
+    async function fetchResponseJSON() {
+        const response = await fetch(e.target.action, {
+            method: 'POST',
+            body: new URLSearchParams(new FormData(e.target))
+        }).catch((error) => {
+            console.log(error)
+        });
+        const responseJSON = await response.json();
+        if(response.ok) {
+            handleResponseSuccess(responseJSON.message);
+        } else {
+            handleResponseError();
+        }
+    }
+    fetchResponseJSON();
 });
 
+const handleResponseSuccess = (message) => {
+    mainFormError.classList.remove('active');
+    mainFormSuccess.classList.add('active');
+    mainFormSuccess.textContent = message;
+    formButton.disabled = true;
+}
+
+const handleResponseError = () => {
+    mainFormError.classList.add('active');
+    mainFormSuccess.classList.remove('active');
+    formButton.disabled = false;
+}
 
 const handleInputsValidation = (element) => {
     checkIfInputValueIsEmpty(element);  //check all the inputs for value presence
@@ -133,7 +142,6 @@ const checkInputExpiryDate = (input) => {
         return false;
     }
 }
-
 
 const setErrorMessage = (input, message) => {
     const errorElement = input.parentNode.querySelector('.error');
